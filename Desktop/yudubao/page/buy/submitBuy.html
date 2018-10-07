@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>购买</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<link rel="stylesheet" type="text/css" href="../../css/common.css">
+	<style type="text/css">
+		.buy_mainContent{
+		    width: 100%;
+
+		}
+        .nav{
+            margin-bottom: 100px;
+        }
+		.buy_content {
+            width: 70%;
+           
+            position: absolute;
+            left: 50%;
+
+            margin-left: -450px;
+        }
+		
+        .triangle{
+            position: absolute;
+            right: -5px;
+            top: 0px;
+            width: 0;
+            height: 0;
+            border-top: 5px solid transparent;
+            border-left: 5px solid rgb(215,215,215);
+            border-bottom: 5px solid transparent;
+        }
+        .blue_triangle{
+            border-left: 5px solid rgb(108,153,209);
+        }
+        .write_triangle{
+            position: absolute;
+            /*right: -5px;*/
+            top: 0px;
+            width: 0;
+            height: 0;
+            border-top: 5px solid transparent;
+            border-left: 5px solid #fff;
+            border-bottom: 5px solid transparent;
+        }
+        .sublines{
+            width: 100%;
+            margin-left: 5%;
+            height: 40px;
+
+        }
+        .submitlines{
+            margin-bottom: 30px;
+        }
+        .sublines>div{
+            width: 30%;
+            float: left;
+            background-color: rgb(215,215,215);
+            height: 10px;
+            margin-right: 1%;
+            position: relative;
+        }
+        .active{
+            background-color: rgb(108,153,209)!important;
+        }
+        .sublines_first{
+            
+            border-bottom-left-radius: 5px;
+            border-top-left-radius: 5px;
+           
+        }
+        .sort_num{
+            height: 25px;
+            width: 25px;
+            border-radius: 50%;
+            background-color: rgb(108,153,209);
+            border: 3px solid #fff;
+            text-align: center;
+            line-height: 25px;
+            margin: 0 auto;
+            position: absolute;
+            left: 50%;
+            margin-left: -15px;
+            top: 50%;
+            margin-top: -16px;
+            color: #fff;
+            background-color: rgb(215,215,215);
+        }
+        /*.gray_triangle{
+            position: absolute;
+            right: -5px;
+            top: 0px;
+            width: 0;
+            height: 0;
+            border-top: 5px solid transparent;
+            border-left: 5px solid rgb(215,215,215)!important;
+            border-bottom: 5px solid transparent;
+        }*/
+        .subName{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -80px;
+            margin-top: 10px;
+            width: 160px;
+            text-align: center;
+            line-height: 30px;
+            /*color: rgb(108,153,209);*/
+            font-weight: 600;
+            color: rgb(215,215,215);
+        }
+        .subactive{
+            color: rgb(108,153,209)!important;
+        }
+        .goodList,.goodtitle{
+            width: 100%;
+        }
+        .over:after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+        .goodtitle>p{
+            height: 60px;
+            padding-top: 15px;
+            box-sizing: border-box;
+            float: left;
+            text-align: center;
+            font-size: 16px;
+        }
+        .goodList li{
+            /*border: 1px solid #999;*/
+            height: 60px;
+            padding-top: 15px;
+            box-sizing: border-box;
+        }
+        .goodList li:after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+        .goodList li>p{
+            float: left;
+            display: inline-block;
+            font-size: 16px;
+            text-align: center;
+        }
+        .firName{
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        .cell1{
+            padding-left: 4%;
+            box-sizing: border-box;
+            padding-right: 4%
+            padding-top:6px;
+        }
+        .cell1{
+            width: 10%
+        }
+        .cell2{
+            width: 25%
+        }
+        .cell3{
+            width: 11%
+        }
+        .cell4{
+            width: 10%
+        }
+        .cell5{
+            width: 15%
+        }
+        .cell6{
+            width: 15%
+        }
+        .cell7{
+            width: 14%;
+        }
+        .boder_line{
+            border:1px solid #999;
+        }
+        .cell4 span{
+            display: inline-block;
+        }
+        .fircount{
+            width: 80px;
+            /*display: inline-block;*/
+            /*margin: 0 auto;*/
+            /*margin-left: 20%;*/
+            /*border:1px solid #999;*/
+        }
+        .fircount span{
+            float: left;
+            width: 28%;
+            border:1px solid #999;
+        }
+        .left_arrow{
+            width: 20px;
+            text-align: center;
+
+        }
+        .left_arrow{
+            border-right: 1px solid #999;
+            background-color: #f0f0f0;
+            cursor: pointer;
+        }
+        .right_add{
+            border-left: 1px solid #999;
+            background-color: #f0f0f0;
+            cursor: pointer;
+        }
+        .cen_cout{
+            width: 28%;
+            float: left;
+            border: 0px;
+             text-align: center; 
+            line-height: 21px;
+            border-bottom: 1px solid #999;
+            border-top: 1px solid #999;
+        }
+        .redcolor{
+            color: #ff0036;
+        }
+        .che .input_che:checked+span:after{
+            top: -2px;
+        }
+        .che .input_che+span{
+            background-color: #fff;
+        }
+        .submune{
+            width: 120px;
+            display: inline-block;
+            background-color:#ff0036;
+            text-align: center;
+            line-height: 32px;
+            
+            float: right;
+            margin-right: 100px;
+        }
+        .submune>a{
+            color: #fff;
+        }
+        
+        /*.fircount:after{
+            content: '';
+            display: block;
+            clear: both;
+        }*/
+        .countnum{
+            padding-left: 30px;
+            box-sizing: border-box;
+        }
+        .allvalue{
+            text-align: right;
+            padding-right: 105px;
+            box-sizing: border-box;
+            font-size: 18px;
+            color: #ff0036;
+            margin-bottom: 10px;
+        }
+        .buy_mainContent:after{
+            content: "";
+            display: block;
+            clear: both;
+        }
+	</style>
+</head>
+<body>
+    <div class="container">
+    	<div class="nav">
+    		<div class="logos lf">
+    			<img src="../../img/120.png">
+    			<span>启思教育</span>
+    		</div>
+    		<div class="con_title">英语阅读宝</div>
+    		<div class="operation rf">
+    			<div class="ope_first lf">
+    				<img src="../../img/120.png">
+    				<span>张三</span>
+    				<!-- <img src="../../img/homework/u2104.png" class="tags"> -->
+                    <p class="tags"></p>
+    				<ul class="message_list">
+    					<li>
+    						<a href="#">基本资料</a>
+    					</li>
+    					<li>
+    						<a href="#">安全设置</a>
+    					</li>
+    				</ul>
+    			</div>
+    			<!-- <div class="exit lf">
+    				<a href="../../index.html">退出</a>
+    			</div> -->
+    		</div>
+    		<div class="leafbg">
+    			<img src="../../img/homework/u1884.gif">
+    		</div>
+    	</div>
+        <div class="buy_mainContent">
+        	<div class="buy_content">
+                
+        		<div class="sublines">
+                    <div class="sublines_first active">
+                        <div class="triangle blue_triangle"></div>
+                        <div class="sort_num active">1</div>
+                        <p class="subName subactive">提交订单</p>
+                    </div>    
+                    <div class="sublines_second">
+                        <div class="write_triangle"></div>
+                        <div class="sort_num">2</div>
+                        <div class="triangle"></div>
+                        <p class="subName">进行付款</p>
+                    </div>    
+                    <div class="sublines_three">
+                        <div class="write_triangle"></div>
+                        <div class="sort_num">3</div>
+                        <div class="triangle"></div>
+                        <p class="subName">完成支付</p>
+                    </div>    
+                </div>
+        		<div class="submitlines">
+                    <div class="firName">课程信息</div>
+                   
+                    <ul class="goodList">
+                       
+                        
+                    </ul>     
+                </div>
+                <div class="sublines">
+                    <p class="allvalue"></p>
+                    <p class="submune">
+                        <a href="payStyle.html">去结算</a>
+                    </p>
+                </div>
+        	</div>
+        </div>
+    </div>
+    
+    <div class="layerMask"></div>
+    <div class="loading">
+        <div class="loadBox">
+            <div class="spinner"></div>
+        </div>
+    </div>
+    <script type="text/javascript" src="../../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../js/common.js"></script>
+    <script type="text/javascript" src="../../js/request.js"></script>
+    <script type="text/javascript">
+        
+        $(function () {
+            var AccountID=localStorage.getItem('publisherId');
+           
+            var erweima={
+          "AccountID": AccountID,
+          // "OrederID": "af2c8376-7e5f-4571-a764-486908a850a8",
+          "PayType": 1
+        }
+       
+               
+        var goodList=[];
+        var allValue=0;//总价格
+        var valueList=[];//商品价格列表
+        $('.buy_con li').on("click",function () {
+            $(this).siblings('li').removeClass('active');
+            $(this).addClass('active');
+        });
+        $('.goodList').on('click','.right_add',function(){
+
+            var val=$(this).siblings('input').val();
+            val++;
+            var allPrice=val*$(this).attr('price');
+            console.log(allPrice);
+            $(this).siblings('input').val(val);
+            $(this).parents('.cell5').siblings('.cell7').attr('allprice',allPrice).text('￥'+allPrice+'.00');
+            var addGood={
+                "IsArticle": true
+            }
+            addGood.GoodsID=$(this).attr('id');
+            addGood.GoodsNumber=1;
+            var data=C.POSTS(JSON.stringify(addGood),httpUrl.AddGoods,successAddalone);
+            allValuePrice();
+        });
+        function successAddalone(data){
+            if(data.Result==1){
+               
+            }else{
+                C.layer(1,data.Message);
+            }
+        }
+        $('.goodList').on('click','.left_arrow',function(){
+            var val=$(this).siblings('input').val();
+            
+            if(val>1){
+                val--;
+                var allPrice=val*$(this).attr('price');
+                console.log(allPrice);
+                $(this).siblings('input').val(val);
+                $(this).parents('.cell5').siblings('.cell7').attr('allprice',allPrice).text('￥'+allPrice+'.00');
+                console.log(allPrice);
+                 var addGood={
+                    "IsArticle": true
+                }
+                addGood.GoodsID=$(this).attr('id');
+                addGood.GoodsNumber=1;
+                var data=C.POST((addGood),httpUrl.SubtractGoods,successRemovealone);
+            }else{
+                val=1;
+            }
+            $(this).siblings('input').val(val);
+            allValuePrice();
+        });
+        function successRemovealone(data){
+            if(data.Result==1){
+               
+            }else{
+                C.layer(1,data.Message);
+            }
+        }
+        var gooddata=C.POSTS({},httpUrl.GetShoppingCartList,successGetgood);
+        function successGetgood(data){
+
+            if(data.Result==1){
+                var str='<li><p class="cell1"><label class="che"><input  type="checkbox" class="input_che" id="1" checked><span class="inpu"></span></label></p><p class="cell2">名称</p><p class="cell3">种类</p><p class="cell4">价格</p><p class="cell5">数量</p><p class="cell6">折扣</p><p class="cell7">合计</p></li>';
+                $.each(data.Data,function(i,val){
+                    var goodAll=val.Number*val.Price;
+                    str+='<li class="boder_line"><p class="cell1"><label class="che"><input id='+val.Id+' ProductId='+val.ProductId+' type="checkbox" class="input_che" checked><span class="inpu"></span></label></p>'
+                    str+='<p class="cell2">'+val.Name+'</p>';
+                    str+='<p class="cell3">上学期</p>';
+                    str+='<p class="cell4">￥'+val.Price+'.00</p>';
+                    str+='<p class="cell5 countnum"><span class="fircount"><span class="left_arrow"  id='+val.ProductId+' price='+val.Price+'>-</span><input type="text" name="count" value='+val.Number+' class="cen_cout"><span class="right_add" id='+val.ProductId+' price='+val.Price+'>+</span></span></p>';
+                    str+='<p class="cell6">无</p>';
+                    str+='<p class="cell7 redcolor" allprice='+goodAll+'>￥'+goodAll+'.00</p></li>';
+                    allValue+=goodAll;
+                });
+                $('.goodList').html(str);
+                $('.allvalue').text('合计：￥'+allValue+'.00');
+                remenber();
+            }
+        }
+        Array.prototype.indexOf = function(val) {
+            for (var i = 0; i < this.length; i++) {
+                if (this[i] == val) return i;
+            }
+            return -1;
+        };
+        Array.prototype.remove = function(val) {
+            var index = this.indexOf(val);
+            if (index > -1) {
+                this.splice(index, 1);
+            }
+        };
+        var removeList=[];
+        var removeGood={};//删除商品参数
+        
+        var goodListAdd=[];//添加多个商品列表
+        var addGoodlist={
+            "AccountID": AccountID
+        };
+        $('.goodList').on('change','input',function(){
+            var checkeds=$(this).is(':checked');
+            var ids=$(this).attr('id');
+            var arr=$('.goodList input[type=checkbox]:checked');
+            var inputdom=$('.goodList input[type=checkbox]');
+            var notArr=$("input[type=checkbox]:not(:checked)");
+            var listArr=goodList;
+            if(ids==1){
+                if(checkeds){
+                    $.each(notArr,function(i,val){
+                        var addgood={
+                            "IsArticle": true
+                        };//添加多个商品单个商品
+                        addgood.GoodsNumber=$(this).parents('.cell1').siblings('.cell5').find('input').val();
+                        addgood.GoodsID=$(val).attr('ProductId');
+                        goodListAdd.push(addgood);
+                        goodList.push(val.id);
+                        val.checked=true;
+                    });
+                    addGoodlist.Goods=goodListAdd;
+                    var addListData=C.POSTS(JSON.stringify(addGoodlist),httpUrl.AddGoodsList,successAddlist);
+                }else{
+                    $.each(arr,function(i,val){
+                        
+                        removeList.push($(val).attr('ProductId'));
+                        if(listArr.indexOf(val.id)!=-1){
+                            val.checked=false;
+                            var h=listArr.indexOf(val.id);
+                            goodList.remove(listArr[h]);
+                        }
+                    });
+                    removeGood.GoodsIds=removeList;
+                    var product=C.POSTS(JSON.stringify(removeGood),httpUrl.RemoGoods,successRemove);
+                }
+            }else{
+                if(checkeds){
+                    var addgood={
+                            "IsArticle": true
+                        };//添加多个商品单个商品
+                        addgood.GoodsNumber=$(this).parents('.cell1').siblings('.cell5').find('input').val();
+                        addgood.GoodsID=$(this).attr('ProductId');
+                        goodListAdd.push(addgood);
+                        addGoodlist.Goods=goodListAdd;
+                    var addProdata=C.POSTS(JSON.stringify(addGoodlist),httpUrl.AddGoodsList,successAddlist);
+                    goodList.push(ids);
+                }else{
+                    var proid=$(this).attr('ProductId');
+                    removeList.push(proid);
+                    
+                    thisInput=$(this).parents('li');
+                    removeGood.GoodsIds=removeList;
+                    var removeData=C.POSTS(JSON.stringify(removeGood),httpUrl.RemoGoods,successRemove);
+                  
+                    var j=goodList.indexOf(ids);
+                    goodList.splice(j,1);
+                }
+            }
+            allValuePrice();
+            // console.log(goodList);
+        });
+        //添加商品
+        function successAddlist(data){
+            if(data.Result==1){
+                C.layer(3,'添加成功');
+                goodListAdd=[];
+
+            }else{
+                C.layer(1,data.Message);
+            }
+        }
+        //删除商品
+        function successRemove(data){
+            if(data.Result==1){
+                C.layer(3,'删除商品成功');
+                // $(thisInput).remove();
+            }else{
+                C.layer(1,data.Message);
+            }
+        }
+        //合计价格
+        function allValuePrice(){
+            var arr=$('.goodList input[type=checkbox]:checked');
+            valueList=[];
+            allValue=0;
+            $.each(arr,function(i,val){
+                if(i>0){
+                    var prices=$(val).parents('.cell1').siblings('.cell7').attr('allprice');
+                    valueList.push(prices);
+                }
+            })
+            // var allvalueprice=0
+            console.log(valueList);
+            for(var j=0;j<valueList.length;j++){
+                allValue+=parseInt(valueList[j]);
+            }
+            $('.allvalue').text('合计：￥'+allValue+'.00');
+            localStorage.setItem('allprice',allValue);
+        }
+        function remenber(){
+            var arr=$('.goodList input[type=checkbox]:checked');
+          
+            $.each(arr,function(i,val){
+                if(i>0){
+                    goodList.push(val.id);
+                }
+                
+            });
+           
+            console.log(goodList);
+        }
+        // $('.submune').on('click',function(){
+            
+
+        //     var data=C.POSTS(JSON.stringify(menu),'http://192.168.16.99:3246/api/Orders/SaveOrders',successSave)
+        // });
+        // function successSave(data){
+        //     if(data.Result==1){
+        //         erweima.OrederID=data.Data;
+        //         getmessage.OrderID=data.Data;
+        //         var data=C.POSTS(JSON.stringify(erweima),'http://180.168.86.30:3246/api/Orders/GetPayQRCode',successCode);
+        //     }
+        // }
+        // var timer=null;
+        // function successCode(data){
+        //     if(data.Result==1){
+        //         console.log(data.Data);
+        //         var url='http://192.168.16.99:3246/api/Verification/MakeQRCode?data='+data.Data;
+        //         $('.layerImg').find('img').attr("src",url);
+        //         $('.layerImg').show();
+        //         console.log(url);
+
+        //         timer=setInterval(function(){
+        //             var data=C.POSTS(JSON.stringify(getmessage),'http://192.168.16.99:3246/api/Orders/QueryyQrCodeState',successGetMessage);
+        //         },1000);
+        //     }
+        // }
+        // function successGetMessage(data){
+        //     if(data.Result==1){
+        //         $('.layerImg').hide();
+        //         clearInterval(timer);
+        //         C.layer(4,"支付成功！");
+        //     }else{
+        //         C.layer(1,data.Message);
+        //     }
+        // }
+        })
+    </script>
+</body>
+</html>
